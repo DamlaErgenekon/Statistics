@@ -1,9 +1,9 @@
 import random
-def weighted_srs(data, n, weights, with_replacement):
+def weighted_srs(data, n, weights, with_replacement=False):
     if with_replacement: return random.choices(data, weights=weights, k=n)
-    d, w, sample = list(data), list(weights), []
-    for _ in range(n):
+    d, w, s = list(data), list(weights), []
+    for i in range(n):
         idx = d.index(random.choices(d, weights=w, k=1)[0])
-        sample.append(d.pop(idx))
+        s.append(d.pop(idx))
         w.pop(idx)
-    return sample
+    return s
